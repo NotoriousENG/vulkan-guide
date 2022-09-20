@@ -8,6 +8,9 @@
 #include <deque>
 #include <functional>
 
+#include "vk_mem_alloc.h"
+#include "vk_mesh.h" 
+
 // once we are sure that the GPU is finished, we go through the queue deleting everything
 struct DetetionQueue
 {
@@ -68,9 +71,14 @@ public:
 	VkPipelineLayout _trianglePipelineLayout;
 	VkPipeline _trianglePipeline;
 	VkPipeline _redTrianglePipeline;
+	VkPipeline _meshPipeline;
+	Mesh _triangleMesh;
 
 	int _selectedShader = 0;
 	DetetionQueue _mainDeletionQueue;
+
+	// vma lib allocator
+	VmaAllocator _allocator;
 
 	//initializes everything in the engine
 	void init();
@@ -102,6 +110,10 @@ private:
 	void init_sync_structures();
 
 	void init_pipelines();
+
+	void load_meshes();
+
+	void upload_mesh(Mesh& mesh);
 };
 
 

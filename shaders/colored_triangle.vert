@@ -1,6 +1,5 @@
 //we will be using glsl version 4.5 syntax
 #version 450
-#extension GL_KHR_vulkan_glsl: enable
 
 //output variable to the fragment shader
 layout (location = 0) out vec3 outColor;
